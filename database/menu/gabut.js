@@ -1,28 +1,28 @@
 const gabut = (pushname, prefix, botName, ownerName, getLevelingLevel, sender, _registered) => {
-	return `🔰 -----[ *GABUTZ MENU* ]----- 🔰
-Hallo, ${pushname} 👋
-Semoga harimu Menyenangkan User, ${sender.split("@")[0]}
+	return `🔰 -----[ *✨𝐄𝐍𝐓𝐑𝐄𝐓𝐄𝐍𝐈𝐌𝐄𝐍𝐓𝐎✨* ]----- 🔰
+Olá, ${pushname} 👋
+${sender.split("@")[0]}
 ┏━━━━━━━━━━━━━━━━━━━━┓
 ┃╭───────────────────
-┃│➸ NAMA : ${pushname}
-┃│➸ LEVEL : ${getLevelingLevel(sender)}
-┃│➸ USER ${botName} : ${_registered.length}
+┃│➸ Nome : ${pushname}
+┃│➸ Level : ${getLevelingLevel(sender)}
+┃│➸ ${botName} : ${_registered.length}
 ┃╰───────────────────
 ┗━━━━━━━━━━━━━━━━━━━━┛
-Berikut adalah fitur yang ada pada bot ini!✨
+Ｒｅｃｕｒｓｏｓ
 ┏━━━━━━━━━━━━━━━━━━━━┓
 ┃╭───────────────────
-┃│➸ *${prefix}apakah*
-┃│➸ *${prefix}bisakah*
-┃│➸ *${prefix}kapankah*
-┃│➸ *${prefix}hobby*
-┃│➸ *${prefix}rate*
-┃│➸ *${prefix}seberapagay*
+┃│➸ *${prefix}apakah* <texto>
+┃│➸ *${prefix}bisakah* <texto>
+┃│➸ *${prefix}kapankah* <texto>
+┃│➸ *${prefix}hobby* <texto>
+┃│➸ *${prefix}rate* <chance de...>
+┃│➸ *${prefix}seberapagay* <% gay>
 ┃│➸ *${prefix}nangis*
 ┃│➸ *${prefix}cium*
 ┃│➸ *${prefix}peluk*
-┃│➸ *${prefix}truth*
-┃│➸ *${prefix}dare*
+┃│➸ *${prefix}truth* <verdade>
+┃│➸ *${prefix}dare* <desafio>
 ┃│➸ *${prefix}timer*
 ┃╰───────────────────
 ┗━━━━━━━━━━━━━━━━━━━━┛
