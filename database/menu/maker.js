@@ -1,20 +1,20 @@
 const maker = (pushname, prefix, botName, ownerName, getLevelingLevel, sender, _registered) => {
-	return `🔰 -----[ *OTHER MENU* ]----- 🔰
-Hallo, ${pushname} 👋
-Semoga harimu Menyenangkan User, ${sender.split("@")[0]}
+	return `🔰 -----[ *𝐌𝐀𝐊𝐄𝐑 𝐌𝐄𝐍𝐔* ]----- 🔰
+Olá, ${pushname} 👋
+${sender.split("@")[0]}
 ┏━━━━━━━━━━━━━━━━━━━━┓
 ┃╭───────────────────
-┃│➸ NAMA : ${pushname}
-┃│➸ LEVEL : ${getLevelingLevel(sender)}
-┃│➸ USER ${botName} : ${_registered.length}
+┃│➸ Nome : ${pushname}
+┃│➸ Level : ${getLevelingLevel(sender)}
+┃│➸ ${botName} : ${_registered.length}
 ┃╰───────────────────
 ┗━━━━━━━━━━━━━━━━━━━━┛
-Berikut adalah fitur yang ada pada bot ini!✨
+𝘙𝘦𝘤𝘶𝘳𝘴𝘰𝘴
 ┏━━━━━━━━━━━━━━━━━━━━┓
 ┃╭───────────────────
-┃│➸ *${prefix}hartatahta*
-┃│➸ *${prefix}pornhub*
-┃│➸ *${prefix}thundername*
+┃│➸ *${prefix}hartatahta* <texto>
+┃│➸ *${prefix}pornhub* texto1|texto2
+┃│➸ *${prefix}thundername* <texto>
 ┃╰───────────────────
 ┗━━━━━━━━━━━━━━━━━━━━┛
 🔰 -----[ *POWERED BY ${ownerName}* ]----- 🔰`
