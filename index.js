@@ -38,22 +38,22 @@ const { removeBackgroundFromImageFile } = require('remove.bg')
 const { ind } = require('./language')
 const vcard = 'BEGIN:VCARD\n' 
             + 'VERSION:3.0\n' 
-            + 'FN:RAMLAN ID\n' 
-            + 'ORG:OWNER BOTZ;\n' 
-            + 'TEL;type=CELL;type=VOICE;waid=6285559240360:+62 855-5924-0360\n' 
+            + 'FN:Icaro\n' 
+            + 'ORG:Proprietário;\n' 
+            + 'TEL;type=CELL;type=VOICE;waid=557988645802:+55 79 8864-5802\n' 
             + 'END:VCARD' 
 prefix = '!'
 blocked = []   
 limitawal = 20
 memberlimit = 2
-cr = '*𝐋𝐀𝐍𝐍 𝐁𝐎𝐓𝐙 𝐕𝐄𝐑𝐈𝐅𝐈𝐄𝐃*'
+cr = '*𝐁𝐎𝐓 𝐏𝐀𝐔𝐋𝐈𝐒𝐓𝐀 【2】𝐕𝐄𝐑𝐈𝐅𝐈𝐂𝐀𝐃𝐎*'
 
 /*
 ]=====> SETTINGS <=====[
 */
-const ownerNumber = ["6285559240360@s.whatsapp.net","6285559240360@s.whatsapp.net"]
-const botName = '𝐋𝐀𝐍𝐍 𝐁𝐎𝐓𝐙'
-const ownerName = 'RAMLAN ID'
+const ownerNumber = ["557988645802@s.whatsapp.net","557988645802@s.whatsapp.net"]
+const botName = 'Harry'
+const ownerName = 'Icaro'
 const BarBarKey = 'YOUR_APIKEY'
 const VhtearKey = 'YOUR_APIKEY'
 const TobzKey = 'YOUR_APIKEY'
@@ -84,7 +84,8 @@ const { gabut } = require('./database/menu/gabut')
 const { groupm } = require('./database/menu/group')
 const { download } = require('./database/menu/download')
 const { dompet } = require('./database/menu/dompet')
-const { random } = require('./database/menu/random')
+
+const { random } = require('./database/menu/random')
 const { other } = require('./database/menu/other')
 const { owb } = require('./database/menu/owb')
 const { maker } = require('./database/menu/maker')
@@ -263,7 +264,7 @@ function kyun(seconds){
   var seconds = Math.floor(seconds % 60);
 
   //return pad(hours) + ':' + pad(minutes) + ':' + pad(seconds)
-  return `${pad(hours)} Jam ${pad(minutes)} Menit ${pad(seconds)} Detik`
+  return `${pad(hours)} Hora ${pad(minutes)} Minutos ${pad(seconds)} Segundos`
 }
 /*
 ]=====> SCAN QR <=====[
@@ -298,7 +299,7 @@ client.on('group-participants-update', async (anu) => {
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 				}
-				teks = `[ *WELCOME IN GC ${mdata.subject}* ] \n___________________________\n@${num.split('@')[0]} Intro/Dikick!!! \n➸ Nama : \n➸ Umur : \n➸ Askot : \n➸ Gender : \n➸ Udah Punya Doi/Blm: \n➸ Pap Muka dumlu!!! \n➸ Instagram? \n𝐒𝐚𝐯𝐞 𝐍𝐨𝐦𝐨𝐫 𝐀𝐃𝐌𝐈𝐍! \n *___________________________*\nJangan jadi kutu lomcat sayang!!`
+				teks = `[ *Bem-vindo ao grupo ${mdata.subject}* ] \n___________________________\n@${num.split('@')[0]} Intro \n➸ Nome : \n➸ Idade :`
 				let buff = await getBuffer(ppimg)
 				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
 			} else if (anu.action == 'remove') {
@@ -308,7 +309,7 @@ client.on('group-participants-update', async (anu) => {
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 				}
-				teks = `SELAMAT TINGGAL... @${num.split('@')[0]}👋* \n_Jasamu akan saya kubur dalam dalam_`
+				teks = `Aposto que o @${num.split('@')[0]} saiu pq é ghost*`
 				let buff = await getBuffer(ppimg)
 				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
 			}
@@ -425,7 +426,7 @@ client.on('group-participants-update', async (anu) => {
                     for (let lmt of _limit) {
                         if (lmt.id === sender) {
                             let limitCounts = limitawal - lmt.limit
-                            if (limitCounts <= 0) return client.sendMessage(from,`Limit anda sudah habis\n\n_Note : limit bisa di dapatkan dengan cara ${prefix}buylimit dan naik level_`, text,{ quoted: mek})
+                            if (limitCounts <= 0) return client.sendMessage(from,`Seu limite acabou\n\n_Nota : limite pode ser obtido por meio de ${prefix}buylimit e subir de nível_`, text,{ quoted: mek})
                             client.sendMessage(from, ind.limitcount(limitCounts), text, { quoted : mek})
                             found = true
                         }
@@ -507,12 +508,6 @@ switch(command) {
 				    const reqXp  = 5000 * (Math.pow(2, getLevelingLevel(sender)) - 1)
 				    const uangku = checkATMuser(sender)
 					await costum(help(pushname, prefix, botName, ownerName, reqXp, getLevelingLevel, sender, _registered, uangku), text, tescuk, cr)
-					break
-				case 'donasi':
-				case 'donate':
-				if (isBanned) return reply(ind.baned())
-				if (!isRegistered) return reply(ind.noregis())
-					client.sendMessage(from, donasi(pushname, prefix, botName, ownerName), text)
 					break					
                 case 'simple':
 				case 'simpel':
@@ -622,7 +617,7 @@ switch(command) {
 							.toFormat('webp')
 							.save(ran)
 							} else {
-						reply(`Kirim gambar/video/gif dengan caption \n${prefix}sticker (durasi sticker video 1-9 detik)`)
+						reply(`Envie fotos/vídeos/gifs com legendas \n${prefix}sticker (duração do vídeo de 1 a 9 segundos)`)
 					}
 					break
 case 'nulis':
@@ -630,11 +625,11 @@ case 'tulis':
 if (isBanned) return reply(ind.baned())
 if (!isRegistered) return reply(ind.noregis())
 if (isLimit(sender)) return reply(ind.limitend(pusname))
-if (args.length < 1) return reply('Yang mau di tulis apaan? titit?')
+if (args.length < 1) return reply('O que você quer escrever?')
 ramlan = body.slice(7)
-reply('[❗] WAIT BRO GUE NULIS DUMLU YAKAN')
+reply('[❗] ESPERE BROO')
 buff = await getBuffer(`https://api.vhtear.com/write?text=${ramlan}&apikey=${vhtear}`)
-client.sendMessage(from, buff, image, {quoted: mek, caption: 'Nulis sendiri gblok:v'})
+client.sendMessage(from, buff, image, {quoted: mek, caption: 'Escreva-se estúpido :v'})
 await limitAdd(sender)
 break					
 case 'quotes':
@@ -644,21 +639,21 @@ if (isLimit(sender)) return reply(ind.limitend(pusname))
 quotes = body.slice(1)
 const quo =['Lebih baik mengerti sedikit daripada salah mengerti.','Hampir semua pria memang mampu bertahan menghadapi kesulitan. Namun, jika Anda ingin menguji karakter sejati pria, beri dia kekuasaan.','Bila tekad seseorang kuat dan teguh, Tuhan akan bergabung dalam usahanya.','Penderitaan adalah pelajaran.','Ilmu pengetahuan tanpa agama adalah pincang.','Hidup itu seperti sebuah sepeda, agar tetap seimbang kita harus tetap bergerak.','Perbedaan masa lalu, sekarang, dan masa depan tak lebih dari ilusi yang keras kepala.','Sebuah meja, sebuah kursi, semangkuk buah, dan sebuah biola; apa lagi yang dibutuhkan agar seseorang bisa merasa bahagia?','Belas kasihanlah terhadap sesama, bersikap keraslah terhadap diri sendiri.','Cara paling baik untuk menggerakkan diri Anda ialah memberi tugas kepada diri sendiri.','Kita tidak boleh kehilangan semangat. Semangat adalah stimulan terkuat untuk mencintai, berkreasi dan berkeinginan untuk hidup lebih lama.','Manusia akan bahagia selama ia memilih untuk bahagia.','Saya tidak berharap menjadi segalanya bagi setiap orang. Saya hanya ingin menjadi sesuatu untuk seseorang.','Apabila sempurna akal seseorang, maka sedikit perkataannya.','Bahagialah orang yang dapat menjadi tuan untuk dirinya, menjadi kusir untuk nafsunya dan menjadi kapten untuk bahtera hidupnya.','Sahabat yang jujur lebih besar harganya daripada harta benda yang diwarisi dari nenek moyang.','Yang paling melelahkan dalam hidup adalah menjadi orang yang tidak tulus.','Terbuka untuk Anda, begitulah Tuhan memberi kita jalan untuk berusaha. Jangan pernah berfikir jalan sudah tertutup.','Penundaan adalah kuburan dimana peluang dikuburkan.','Cinta bukan saling menatap mata, namun melihat ke arah yang sama bersama-sama.','Kita adalah apa yang kita kerjakan berulang kali. Dengan demikian, kecemerlangan bukan tindakan, tetapi kebiasaan.','Jangan pernah mencoba menjadikan putra atau putri Anda menjadi seperti Anda. Diri Anda hanya cukup satu saja.','Jika Anda bisa membuat orang lain tertawa, maka Anda akan mendapatkan semua cinta yang Anda inginkan.','Masalah akan datang cepat atau lambat. Jika masalah datang, sambut dengan sebaik mungkin. Semakin ramah Anda menyapanya, semakin cepat ia pergi.','Kita tak bisa melakukan apapun untuk mengubah masa lalu. Tapi apapun yang kita lakukan bisa mengubah masa depan.','Kesabaran adalah teman dari kebijaksanaan.','Orang-orang kreatif termotivasi oleh keinginan untuk maju, bukan oleh keinginan untuk mengalahkan orang lain.','Dimanapun engkau berada selalulah menjadi yang terbaik dan berikan yang terbaik dari yang bisa kita berikan.','Kebencian seperti halnya cinta, berkobar karena hal-hal kecil.','Anda tidak perlu harus berhasil pada kali pertama.','Satu jam yang intensif, jauh lebih baik dan menguntungkan daripada bertahun-tahun bermimpi dan merenung-renung.','Hal terbaik yang bisa Anda lakukan untuk orang lain bukanlah membagikan kekayaan Anda, tetapi membantu dia untuk memiliki kekayaannya sendiri.','Tidak ada jaminan keberhasilan, tetapi tidak berusaha adalah jaminan kegagalan.','Aku tidak tahu kunci sukses itu apa, tapi kunci menuju kegagalan adalah mencoba membuat semua orang senang.']
 const tes = quo[Math.floor(Math.random() * quo.length)]
-client.sendMessage(from, ''+tes+'\n\n_By : ⸸Ramlan⸸Panutanque._', text, { quoted: mek })
+client.sendMessage(from, ''+tes+'\n\n_By : hcyxuit._', text, { quoted: mek })
 await limitAdd(sender)
 break
 				case 'tts':
 				if (isBanned) return reply(ind.baned())
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-				if (args.length < 1) return client.sendMessage(from, 'Kode bahasanya mana kak | contoh : ${prefix}tts id ah yamate kudasai', text, {quoted: mek})
+				if (args.length < 1) return client.sendMessage(from, 'Onde está o código do idioma | exemplo : ${prefix}tts vtnc', text, {quoted: mek})
 					const gtts = require('./lib/gtts')(args[0])
-					if (args.length < 2) return client.sendMessage(from, 'Teksnya mana kak | contoh : ${prefix}tts id ah yamate kudasai', text, {quoted: mek})
+					if (args.length < 2) return client.sendMessage(from, 'Onde está o texto, irmão? | exemplo : ${prefix}tts vtnc', text, {quoted: mek})
 					dtt = body.slice(8)
 					ranm = getRandom('.mp3')
 					rano = getRandom('.ogg')
 					dtt.length > 300
-					? reply('Teks nya terlalu panjang kak')
+					? reply('O texto é muito longo mano')
 					: gtts.save(ranm, dtt, function() {
 						exec(`ffmpeg -i ${ranm} -ar 48000 -vn -c:a libopus ${rano}`, (err) => {
 							fs.unlinkSync(ranm)
@@ -674,7 +669,7 @@ break
 					if (isBanned) return reply(ind.baned())
 					if (!isRegistered) return reply(ind.noregis())
 				    if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (args.length < 1) return reply('yang mau dijadiin text sticker apaan, titit kah?')
+					if (args.length < 1) return reply('que adesivo de texto você quer fazer?')
 					ranp = getRandom('.png')
 					rano = getRandom('.webp')
 					teks = body.slice(4).trim()
@@ -692,7 +687,7 @@ break
 				if (isBanned) return reply(ind.baned())
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-				if (!isQuotedSticker) return reply('Reply atau Tag sticker yang mau dijadiin gambar kak >_<')
+				if (!isQuotedSticker) return reply('Responda ou marque o adesivo que você deseja fazer uma foto >_<')
 					reply(ind.wait())
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 					media = await client.downloadAndSaveMediaMessage(encmedia)
@@ -701,7 +696,7 @@ break
 						fs.unlinkSync(media)
 						if (err) return reply(ind.stikga())
 						buffer = fs.readFileSync(ran)
-						client.sendMessage(from, buffer, image, {quoted: mek, caption: 'nih kak [(^.^)]'})
+						client.sendMessage(from, buffer, image, {quoted: mek, caption: 'aquii'})
 						fs.unlinkSync(ran)
 					})
 					await limitAdd(sender)
@@ -713,12 +708,12 @@ break
                 var gh = body.slice(12)
 					var quote = gh.split("&")[0];
 					var wm = gh.split("&")[1];
-					const pref = `yang mau dijadiin quote apaan, titit?\n\ncontoh : ${prefix}bikinquote aku bukan boneka & Kata Ramlan`
+					const pref = `que tipo de citação você quer se tornar?\n\nexemplo : ${prefix}bikinquote Eu não sou uma boneca e diz Harry`
 					if (args.length < 1) return reply(pref)
 					reply(ind.wait())
 					anu = await fetchJson(`https://terhambar.com/aw/qts/?kata=${quote}&author=${wm}&tipe=random`, {method: 'get'})
 					buffer = await getBuffer(anu.result)
-					client.sendMessage(from, buffer, image, {caption: 'Nih kak >_<', quoted: mek})
+					client.sendMessage(from, buffer, image, {caption: 'aquii >_<', quoted: mek})
 					await limitAdd(sender)
 					break
                    case 'stalkig':
@@ -727,9 +722,9 @@ break
                    if (isLimit(sender)) return reply(ind.limitend(pusname))
                      teks = body.slice(9)
                      hmm = await fetchJson(`https://api.vhtear.com/igprofile?query=${teks}&apikey=${VhtearKey}`, {method: 'get'})
-                     reply('[❗] Sabar Lagi Stalking IG nya kak')
+                     reply('[❗] Paciência, stalkeando seu IG')
                      buffer = await getBuffer(hmm.data.picture)
-                     hasil = `YAHAHA TELAH DI STALK BOS KU UNTUK USERNAME ${teks} \n\n *Username?* : _${hmm.data.result.username}_ \n *Nama??* : _${hmm.data.result.full_name}_ \n *Jumlah Follower??﹦?* : _${hmm.data.result.follower}_ \n *Jumlah Following?* : _${hmm.data.result.follow}_ \n *Jumlah Post?* : _${hmm.data.result.post_count}_ \n *Biografi?? :* _${hmm.data.result.biography}`
+                     hasil = `sla ${teks} \n\n *Usuário* : _${hmm.data.result.username}_ \n *Nome* : _${hmm.data.result.full_name}_ \n *Seguidores* : _${hmm.data.result.follower}_ \n *Seguindo* : _${hmm.data.result.follow}_ \n *Postagens* : _${hmm.data.result.post_count}_ \n *Bio :* _${hmm.data.result.biography}`
                     client.sendMessage(from, buffer, image, {quoted: mek, caption: hasil})
                     await limitAdd(sender)
 					break
@@ -740,8 +735,8 @@ break
                 const namaUser = q.substring(0, q.indexOf('|') - 0)
                 const umurUser = q.substring(q.lastIndexOf('|') + 1)
                 const serialUser = createSerial(20)
-                if (namaUser.length >= 30) return reply(`Namanya kepanjangan kak :)`)
-                if (umurUser.length >= 3, umurUser.length <= 1) return reply(`Umur min 10 tahun max 40 tahun`)
+                if (namaUser.length >= 30) return reply(`cadê seu nome?`)
+                if (umurUser.length >= 3, umurUser.length <= 1) return reply(`Idade mínima 10 anos no máximo 40 anos`)
                 veri = sender
                 if (isGroup) {
                     addRegisteredUser(sender, namaUser, umurUser, time, serialUser)
@@ -765,19 +760,9 @@ break
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 					bisakah = body.slice(1)
-					const bisa =['Tentu Saja Bisa! Kamu Adalah Orang Paling Homky','Gak Bisa Ajg Aowkwowk','Hmm Gua Gak Tau Yaa, tanya ama bapakau','Ulangi Tod Gua Ga Paham']
+					const bisa =['Claro que eu posso! Você é a pessoa mais quente','Não é possível hkwiehejs','Hmm, eu não sei sim, pergunte ao seu pai','Repete, eu não entendi']
 					const keh = bisa[Math.floor(Math.random() * bisa.length)]
-					client.sendMessage(from, 'Pertanyaan : *'+bisakah+'*\n\nJawaban : '+ keh, text, { quoted: mek })
-					await limitAdd(sender)
-					break
-				case 'kapankah':
-				if (isBanned) return reply(ind.baned())
-				if (!isRegistered) return reply(ind.noregis())
-				if (isLimit(sender)) return reply(ind.limitend(pusname))
-					kapankah = body.slice(1)
-					const kapan =['Besok','Lusa','Tadi','4 Hari Lagi','5 Hari Lagi','6 Hari Lagi','1 Minggu Lagi','2 Minggu Lagi','3 Minggu Lagi','1 Bulan Lagi','2 Bulan Lagi','3 Bulan Lagi','4 Bulan Lagi','5 Bulan Lagi','6 Bulan Lagi','1 Tahun Lagi','2 Tahun Lagi','3 Tahun Lagi','4 Tahun Lagi','5 Tahun Lagi','6 Tahun Lagi','1 Abad lagi','3 Hari Lagi']
-					const koh = kapan[Math.floor(Math.random() * kapan.length)]
-					client.sendMessage(from, 'Pertanyaan : *'+kapankah+'*\n\nJawaban : '+ koh, text, { quoted: mek })
+					client.sendMessage(from, 'Pergunta : *'+bisakah+'*\n\nResposta : '+ keh, text, { quoted: mek })
 					await limitAdd(sender)
 					break
            case 'apakah':
@@ -785,9 +770,9 @@ break
            if (!isRegistered) return reply(ind.noregis())
            if (isLimit(sender)) return reply(ind.limitend(pusname))
 					apakah = body.slice(1)
-					const apa =['Iya','Tidak','Bisa Jadi','Ulangi bro gak paham']
+					const apa =['sim','Não','Pode ser','Repita mano, não entendi']
 					const kah = apa[Math.floor(Math.random() * apa.length)]
-					client.sendMessage(from, 'Pertanyaan : *'+apakah+'*\n\nJawaban : '+ kah, text, { quoted: mek })
+					client.sendMessage(from, 'Pergunta : *'+apakah+'*\n\nResposta : '+ kah, text, { quoted: mek })
 					await limitAdd(sender)
 					break
 				case 'rate':
@@ -797,7 +782,7 @@ break
 					rate = body.slice(1)
 					const ra =['4','9','17','28','34','48','59','62','74','83','97','100','29','94','75','82','41','39']
 					const te = ra[Math.floor(Math.random() * ra.length)]
-					client.sendMessage(from, 'Pertanyaan : *'+rate+'*\n\nJawaban : '+ te+'%', text, { quoted: mek })
+					client.sendMessage(from, 'Pergunta : *'+rate+'*\n\nA chance é de : '+ te+'%', text, { quoted: mek })
 					await limitAdd(sender)
 					break
            case 'hobby':
@@ -805,7 +790,7 @@ break
            if (!isRegistered) return reply(ind.noregis())
            if (isLimit(sender)) return reply(ind.limitend(pusname))
 					hobby = body.slice(1)
-					const hob =['Desah Di Game','Ngocokin Doi','Stalking sosmed nya mantan','Kau kan gak punya hobby awokawok','Memasak','Membantu Atok','Mabar','Nobar','Sosmedtan','Membantu Orang lain','Nonton Anime','Nonton Drakor','Naik Motor','Nyanyi','Menari','Bertumbuk','Menggambar','Foto fotoan Ga jelas','Maen Game','Berbicara Sendiri']
+					const hob =['Chiado no jogo','Ngocokin Doi','Sua ex-perseguição nas redes sociais','Você não tem um hobby kaakaka','cozinhar','Ajude Atok','sla','fdp','Eu preciso de ajuda','Ajudando os Outros','Assistindo anime','Assistir Drakor','Dirigindo uma moto','Cantar','Dança','Brigando','Desenhar','A foto não é nítida','Jogando','Falando sozinho']
 					const by = hob[Math.floor(Math.random() * hob.length)]
 					client.sendMessage(from, 'Pertanyaan : *'+hobby+'*\n\nJawaban : '+ by, text, { quoted: mek })
 					await limitAdd(sender)
@@ -816,7 +801,7 @@ break
            if (isLimit(sender)) return reply(ind.limitend(pusname))
 					teks = body.slice(1)
 		   anu = await fetchJson(`https://arugaz.herokuapp.com/api/howgay`, {method: 'get'})
-		   hasil = `Nih Liat Data Gay Si ${teks}\n\n\nPersentase Gay : ${res.data.persen}%\nAlert!!! : ${res.data.desc}`
+		   hasil = `Veja os dados do Gay ${teks}\n\n\nPorcentagem do Gay : ${res.data.persen}%\nAlerta!!! : ${res.data.desc}`
 		   reply(hasil)
 		   await limitAdd(sender)
 					break
@@ -875,7 +860,7 @@ break
                 if (isBanned) return reply(ind.baned())
                 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-					const trut =['Pernah suka sama siapa aja? berapa lama?','Kalau boleh atau kalau mau, di gc/luar gc siapa yang akan kamu jadikan sahabat?(boleh beda/sma jenis)','apa ketakutan terbesar kamu?','pernah suka sama orang dan merasa orang itu suka sama kamu juga?','Siapa nama mantan pacar teman mu yang pernah kamu sukai diam diam?','pernah gak nyuri uang nyokap atau bokap? Alesanya?','hal yang bikin seneng pas lu lagi sedih apa','pernah cinta bertepuk sebelah tangan? kalo pernah sama siapa? rasanya gimana brou?','pernah jadi selingkuhan orang?','hal yang paling ditakutin','siapa orang yang paling berpengaruh kepada kehidupanmu','hal membanggakan apa yang kamu dapatkan di tahun ini','siapa orang yang bisa membuatmu sange','siapa orang yang pernah buatmu sange','(bgi yg muslim) pernah ga solat seharian?','Siapa yang paling mendekati tipe pasangan idealmu di sini','suka mabar(main bareng)sama siapa?','pernah nolak orang? alasannya kenapa?','Sebutkan kejadian yang bikin kamu sakit hati yang masih di inget','pencapaian yang udah didapet apa aja ditahun ini?','kebiasaan terburuk lo pas di sekolah apa?']
+					const trut =['Você já gostou de alguém? Quem mais?','Se você pode ou se quiser, em grupo/fora do grupo, com quem você fará amizade?','Qual é o seu maior medo?','Você já gostou de alguém e sentiu essa pessoa como você também?','Qual é o nome da ex-namorada do seu amigo de que você gostava secretamente?','Você já roubou o dinheiro de sua mãe ou de seu pai? O motivo?','o que te faz feliz quando você está triste?','amor nunca correspondido? se alguma vez com quem? como se sente, brow?','já teve um caso com alguém?','a coisa mais temida','quem é a pessoa mais influente em sua vida','que coisa orgulhosa você tem este ano','quem é a pessoa que pode fazer você se sentir desconfortável','quem é a pessoa que te deixou desconfortável','já orou diariamente?','Quem está mais próximo do seu tipo de parceiro ideal aqui','Com quem você gosta de jogar?','você já recusou alguém? a razão porque?','Mencione o incidente que o machucou e que você ainda se lembra','Que conquistas você obteve este ano?','qual era o seu pior hábito na escola?']
 					const ttrth = trut[Math.floor(Math.random() * trut.length)]
 					truteh = await getBuffer(`https://i.ibb.co/305yt26/bf84f20635dedd5dde31e7e5b6983ae9.jpg`)
 					client.sendMessage(from, truteh, image, { caption: '*Truth*\n\n'+ ttrth, quoted: mek })
@@ -884,7 +869,7 @@ break
                 if (isBanned) return reply(ind.baned())
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))                
-					const dare =['Kirim pesan ke mantan kamu dan bilang "aku masih suka sama kamu','telfon crush/pacar sekarang dan ss ke pemain','pap ke salah satu anggota grup','Bilang "KAMU CANTIK BANGET NGGAK BOHONG" ke cowo','ss recent call whatsapp','drop emot 🤥 setiap ngetik di gc/pc selama 1 hari','kirim voice note bilang can i call u baby?','drop kutipan lagu/quote, terus tag member yang cocok buat kutipan itu','pake foto sule sampe 3 hari','ketik pake bahasa daerah 24 jam','ganti nama menjadi "gue anak lucinta luna" selama 5 jam','chat ke kontak wa urutan sesuai %batre kamu, terus bilang ke dia "i lucky to hv you','prank chat mantan dan bilang " i love u, pgn balikan','record voice baca surah al-kautsar','bilang "i hv crush on you, mau jadi pacarku gak?" ke lawan jenis yang terakhir bgt kamu chat (serah di wa/tele), tunggu dia bales, kalo udah ss drop ke sini','sebutkan tipe pacar mu!','snap/post foto pacar/crush','teriak gajelas lalu kirim pake vn kesini','pap mukamu lalu kirim ke salah satu temanmu','kirim fotomu dengan caption, aku anak pungut','teriak pake kata kasar sambil vn trus kirim kesini','teriak " anjimm gabutt anjimmm " di depan rumah mu','ganti nama jadi " BOWO " selama 24 jam','Pura pura kerasukan, contoh : kerasukan maung, kerasukan belalang, kerasukan kulkas, dll']
+					const dare =['Envie uma mensagem para o seu ex e diga "Eu ainda gosto de você','namorado/namorada agora e ss para jogadores','diga eu te amo para um membro do grupo','Diga "VOCÊ É TÃO BONITA, NÃO SÃO AMIGOS" para os rapazes','ss chamada recente Whatsapp','Abandone "🦄💨" emocional a cada digitação no GRUPO/PC por 1 dia','envia um áudio de voz "como posso chamá-lo baby?"','solte a citação da música/citação e marque o membro apropriado para essa citação','use fotos de barbie por até 3 dias','digite usando o idioma local 24 horas','Mude o nome para "Sou uma criança mimada" por 5 horas','bate-papo para entrar em contato com o pedido de acordo com sua %bateria, continue dizendo a ele "tive sorte em tê-lo','Bate-papo do ex e diga "eu te amo, me pega de volta','grave um áudio e mande pra alguma pessoa aleatória do grupo','diga "eu tenho uma queda por você, quer ser meu namorado ou não?" para o sexo oposto seu último bate-papo (passar em wa/tele), espere ele responder, se já sim manda a foto aqui','indique o seu tipo de namorado!','tirar/postar fotos de namorada/paixão','peça alguma pessoa em namoro no pv então envie a print do que ela/ele falou','Faça um papinho na sua cara e envie para um de seus amigos, a é verdade você não tem amigos, F','mande sua foto com uma legenda, sou uma criança adotada, em outro grupo','mande um áudio pra sua mãe falando "Eu sou Gay" e depois mande a print do que ela falou no grupo','grite "aiiinnnn nobru apelão" na frente de sua casa','Mude o seu nome para "EU SOU GAY" por 24 horas','Finja estar possuído, por exemplo: possessão de maung, posse de gafanhoto, posse de geladeira, etc.']
 					const der = dare[Math.floor(Math.random() * dare.length)]
 					tod = await getBuffer(`https://i.ibb.co/305yt26/bf84f20635dedd5dde31e7e5b6983ae9.jpg`)
 					client.sendMessage(from, tod, image, { quoted: mek, caption: '*Dare*\n\n'+ der })
@@ -896,9 +881,9 @@ break
 				if (args[1]=="detik") {var timer = args[0]+"000"
 				} else if (args[1]=="menit") {var timer = args[0]+"0000"
 				} else if (args[1]=="jam") {var timer = args[0]+"00000"
-				} else {return reply("*pilih:*\ndetik\nmenit\njam")}
+				} else {return reply("*escolher:*\ndetik [segundos]\nmenit [minutos]\njam [hora]")}
 				setTimeout( () => {
-				reply("Waktu habis")
+				reply("O tempo acabou")
 				}, timer)
 				break						   
 /*
@@ -908,16 +893,16 @@ break
                   if (isBanned) return reply(ind.baned())				
 					if (!isGroup) return reply(ind.groupo())
 					if (!isGroupAdmins) return reply(ind.admin())
-					if (args.length < 1) return reply('Ekhemm >_<')
+					if (args.length < 1) return reply('welcome 1')
 					if (Number(args[0]) === 1) {
-						if (isWelkom) return reply('*FITUR WELCOME SUDAH AKTIF KAK*')
+						if (isWelkom) return reply('*OS RECURSOS DE BEM-VINDO ESTÃO ATIVOS*')
 						welkom.push(from)
 						fs.writeFileSync('./database/group/welkom.json', JSON.stringify(welkom))
-						reply('*⟪ SUKSES ⟫ MENGAKTIFKAN FITUR WELCOME/LEAVE DI GROUP*')
+						reply('*⟪ SUCESSO ⟫ ATIVADO RECURSO DE BOAS VINDAS NESTE GRUPO*')
 					} else if (Number(args[0]) === 0) {
 						welkom.splice(from, 1)
 						fs.writeFileSync('./database/group/welkom.json', JSON.stringify(welkom))
-						reply('*⟪ SUKSES ⟫ MEMATIKAN FITUR WELCOME/LEAVE DI GROUP*')
+						reply('*⟪ SUCESSO ⟫ DESATIVOU RECURSO DE BOAS VINDAS NESTE GRUPO*')
 					} else {
 						reply(ind.satukos())
 					}
@@ -926,16 +911,16 @@ break
                   if (isBanned) return reply(ind.baned())                 
 					if (!isGroup) return reply(ind.groupo())
 					if (!isOwner) return reply(ind.ownerb())
-					if (args.length < 1) return reply('Ekhemm >_<')
+					if (args.length < 1) return reply('event 1')
 					if (Number(args[0]) === 1) {
-						if (isEventon) return reply('*FITUR EVENT SUDAH AKTIF KAK*')
+						if (isEventon) return reply('*O RECURSO DE EVENTO ESTÃO ATIVOS*')
 						event.push(from)
 						fs.writeFileSync('./database/group/event.json', JSON.stringify(event))
-						reply('*⟪ SUKSES ⟫ MENGAKTIFKAN EVENT DI GROUP*')
+						reply('*⟪ SUCESSO ⟫ ATIVOU EVENTOS NESTE GRUPO*')
 					} else if (Number(args[0]) === 0) {
 						event.splice(from, 1)
 						fs.writeFileSync('./database/group/event.json', JSON.stringify(event))
-						reply('*⟪ SUKSES ⟫ MEMATIKAN EVENT DI GROUP*')
+						reply('*⟪ SUCESSO ⟫ DESATIVOU EVENTOS NESTE GRUPO*')
 					} else {
 						reply(ind.satukos())
 					}
@@ -943,9 +928,9 @@ break
                 case 'leveling':
                 if (!isGroup) return reply(ind.groupo())
                 if (!isGroupAdmins) return reply(ind.admin())
-                if (args.length < 1) return reply('Ekhemm >_<')
+                if (args.length < 1) return reply('leveling enable')
                 if (args[0] === 'enable') {
-                    if (isLevelingOn) return reply('*fitur level sudah aktif sebelum nya*')
+                    if (isLevelingOn) return reply('*o recurso de nível já estava ativo antes*')
                     _leveling.push(from)
                     fs.writeFileSync('./database/group/leveling.json', JSON.stringify(_leveling))
                      reply(ind.lvlon())
@@ -961,16 +946,16 @@ break
                   if (isBanned) return reply(ind.baned())				
 					if (!isGroup) return reply(ind.groupo())
 					if (!isGroupAdmins) return reply(ind.admin())
-					if (args.length < 1) return reply('Ekhemm >_<')
+					if (args.length < 1) return reply('simih 1')
 					if (Number(args[0]) === 1) {
-						if (isSimi) return reply('*SUDAH AKTIF*')
+						if (isSimi) return reply('*ATIVADO*')
 						samih.push(from)
 						fs.writeFileSync('./database/group/simi.json', JSON.stringify(samih))
-						reply('*⟪ SUKSES ⟫ MENGAKTIFKAN FITUR SIMI DI GROUP*')
+						reply('*⟪ SUCESSO ⟫ ATIVOU RECURSO DO SIMI NESTE GRUPO*')
 					} else if (Number(args[0]) === 0) {
 						samih.splice(from, 1)
 						fs.writeFileSync('./database/group/simi.json', JSON.stringify(samih))
-						reply('*⟪ SUKSES ⟫ MEMATIKAN FITUR SIMI DI GROUP*')
+						reply('*⟪ SUCESSO ⟫ ATIVOU RECURSO DO SIMI NESTE GRUPO*')
 					} else {
 						reply(ind.satukos())
 					}
@@ -979,16 +964,16 @@ break
                   if (isBanned) return reply(ind.baned())				
 					if (!isGroup) return reply(ind.groupo())
 					if (!isGroupAdmins) return reply(ind.admin())
-					if (args.length < 1) return reply('Ekhem >_<')
+					if (args.length < 1) return reply('nsfw 1')
 					if (Number(args[0]) === 1) {
-						if (isNsfw) return reply(' *sudah aktif*  !!')
+						if (isNsfw) return reply(' *ativado*  !!')
 						nsfw.push(from)
 						fs.writeFileSync('./database/group/nsfw.json', JSON.stringify(nsfw))
-						reply('*⟪ SUKSES ⟫ MENGAKTIFKAN FITUR NSFW DI GROUP*')
+						reply('*⟪ SUCESSO ⟫ ATIVOU O RECURSO NSFW NESTE GRUPO*')
 					} else if (Number(args[0]) === 0) {
 						nsfw.splice(from, 1)
 						fs.writeFileSync('./database/group/nsfw.json', JSON.stringify(nsfw))
-						reply('*⟪ SUKSES ⟫ MEMATIKAN FITUR NSWF DI GROUP*')
+						reply('*⟪ SUCESSO ⟫ DESATIVOU O RECURSO NSFW NESTE GRUPO*')
 					} else {
 						reply(ind.satukos())
 					}
@@ -999,7 +984,7 @@ break
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))				
 					if (!isGroup) return reply(ind.groupo())
-					teks = `*DAFTAR ATASAN GROUP* _${groupMetadata.subject}_\n*TOTAL* : ${groupAdmins.length}\n\n`
+					teks = `*LISTA DO GRUPO* _${groupMetadata.subject}_\n*TOTAL* : ${groupAdmins.length}\n\n`
 					no = 0
 					for (let admon of groupAdmins) {
 						no += 1
@@ -1014,10 +999,10 @@ break
 					if (!isGroupAdmins) return reply(ind.admin())
 					if (!isBotGroupAdmins) return reply(ind.badmin())
 					if (args[0] === 'buka') {
-					    reply(`*BERHASIL MEMBUKA GROUP*`)
+					    reply(`*ABERTURA DE GRUPO COM SUCESSO*`)
 						client.groupSettingChange(from, GroupSettingChange.messageSend, false)
 					} else if (args[0] === 'tutup') {
-						reply(`*BERHASIL MENUTUP GROUP*`)
+						reply(`*GRUPO FECHADO*`)
 						client.groupSettingChange(from, GroupSettingChange.messageSend, true)
 					}
 					break
@@ -1028,14 +1013,14 @@ break
 					if (!isGroup) return reply(ind.groupo())
 					if (!isGroupAdmins) return reply(ind.admin())
 					if (!isBotGroupAdmins) return reply(ind.badmin())
-					if (args.length < 1) return reply('Yang mau di add bapakau kah? -_-')
-					if (args[0].startsWith('08')) return reply('Gunakan kode bahasa kak')
+					if (args.length < 1) return reply('Deseja adicioná-lo, um gênio? -_-')
+					if (args[0].startsWith('08')) return reply('Use o código do país')
 					try {
 						num = `${args[0].replace(/ /g, '')}@s.whatsapp.net`
 						client.groupAdd(from, [num])
 					} catch (e) {
 						console.log('Error :', e)
-						reply('Anjim yang mau di add di private, dahlah :)')
+						reply('não foi possível adicionar número, talvez pq esse número seja privado :)')
 					}
 					break
 			     	case 'kick':
@@ -1045,18 +1030,18 @@ break
 					if (!isGroup) return reply(ind.groupo())
 					if (!isGroupAdmins) return reply(ind.admin())
 					if (!isBotGroupAdmins) return reply(ind.badmin())
-					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('𝗧𝗮𝗴 𝘁𝗮𝗿𝗴𝗲𝘁 ??𝗮𝗻𝗴 𝗶𝗻𝗴𝗶𝗻 𝗱𝗶 𝘁𝗲𝗻𝗱𝗮𝗻𝗴!')
+					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('quem você quer expulsar gênio?')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 					if (mentioned.length > 1) {
 						teks = ''
 						for (let _ of mentioned) {
-							teks += `Bismillah atas izin admin grup kamu akan saya tendang 🏃 :\n`
+							teks += `adios ksksks :\n`
 							teks += `@_.split('@')[0]`
 						}
 						mentions(teks, mentioned, true)
 						client.groupRemove(from, mentioned)
 					} else {
-						mentions(`Bismillah atas izin admin grup kamu akan saya tendang @${mentioned[0].split('@')[0]} 🏃`, mentioned, true)
+						mentions(`O @${mentioned[0].split('@')[0]} foi banido jakkaja`, mentioned, true)
 						client.groupRemove(from, mentioned)
 					}
 					break
@@ -1091,7 +1076,7 @@ break
                 const userXp = getLevelingXp(sender)
                 if (userLevel === undefined && userXp === undefined) return reply(ind.lvlnul())
                 const requiredXp = 5000 * (Math.pow(2, userLevel) - 1)
-                resul = `┏━━━━━━♡ *LEVEL* ♡━━━━━━━┓\n┃╭───────────────────\n┃│➸ NAMA : ${pushname}\n┃│➸ NOMOR : wa.me/${sender.split("@")[0]}\n┃│➸ XP : ${userXp}/${requiredXp}\n┃│➸ LEVEL : ${userLevel}\n┃╰───────────────────\n┗━━━━━━━━━━━━━━━━━━━━┛`
+                resul = `┏━━━━━━♡ *LEVEL* ♡━━━━━━━┓\n┃╭───────────────────\n┃│➸ Nome : ${pushname}\n┃│➸ Número : wa.me/${sender.split("@")[0]}\n┃│➸ XP : ${userXp}/${requiredXp}\n┃│➸ LEVEL : ${userLevel}\n┃╰───────────────────\n┗━━━━━━━━━━━━━━━━━━━━┛`
                client.sendMessage(from, resul, text, { quoted: mek})
                 .catch(async (err) => {
                         console.error(err)
@@ -1106,7 +1091,7 @@ break
 				    if (isLimit(sender)) return reply(ind.limitend(pusname))
 				    if (!isBotGroupAdmins) return reply(ind.badmin())
 				    linkgc = await client.groupInviteCode (from)
-				    yeh = `https://chat.whatsapp.com/${linkgc}\n\nlink Group *${groupName}*`
+				    yeh = `https://chat.whatsapp.com/${linkgc}\n\nlink do grupo *${groupName}*`
 				    client.sendMessage(from, yeh, text, {quoted: mek})
 			        await limitAdd(sender)
 					break
@@ -1131,7 +1116,7 @@ break
 			    if (!isGroupAdmins) return reply(ind.admin())
 				if (!isBotGroupAdmins) return reply(ind.badmin())
                 client.groupUpdateSubject(from, `${body.slice(9)}`)
-                client.sendMessage(from, '⟪ SUKSES ⟫ Mengubah Nama Grup', text, {quoted: mek})
+                client.sendMessage(from, '⟪ SUCESSO ⟫ alterou o nome do grupo', text, {quoted: mek})
 					break
                 case 'setdesc':
                 if (!isRegistered) return reply(ind.noregis())                
@@ -1139,7 +1124,7 @@ break
 			    if (!isGroupAdmins) return reply(ind.admin())
 				if (!isBotGroupAdmins) return reply(ind.badmin())
                 client.groupUpdateDescription(from, `${body.slice(9)}`)
-                client.sendMessage(from, '⟪ SUKSES ⟫ Mengubah Desk Grup', text, {quoted: mek})
+                client.sendMessage(from, '⟪ SUCESSO ⟫ alterou a descrição do grupo', text, {quoted: mek})
 					break
            case 'demote':
                 if (!isRegistered) return reply(ind.noregis())           
@@ -1151,13 +1136,13 @@ break
 					if (mentioned.length > 1) {
 						teks = ''
 						for (let _ of mentioned) {
-							teks += `*jabatan kamu di copot*🏃 :\n`
+							teks += `*perdeu adm jakak* :\n`
 							teks += `@_.split('@')[0]`
 						}
 						mentions(teks, mentioned, true)
 						client.groupDemoteAdmin(from, mentioned)
 					} else {
-						mentions(`Yahh @${mentioned[0].split('@')[0]} Jabatan kamu sebagai leluhur di grup telah di copot🏃`, mentioned, true)
+						mentions(`O @${mentioned[0].split('@')[0]} perdeu adm kakaka`, mentioned, true)
 						client.groupDemoteAdmin(from, mentioned)
 					}
 					break
@@ -1171,13 +1156,13 @@ break
 					if (mentioned.length > 1) {
 						teks = ''
 						for (let _ of mentioned) {
-							teks += `Yeee🥳 Kamu naik jabatan >_< :\n`
+							teks += `ele agr é adm 😳 :\n`
 							teks += `@_.split('@')[0]`
 						}
 						mentions(teks, mentioned, true)
 						client.groupMakeAdmin(from, mentioned)
 					} else {
-						mentions(`Selamat🥳 @${mentioned[0].split('@')[0]} *anda naik menjadi admin group* >_<`, mentioned, true)
+						mentions(`O @${mentioned[0].split('@')[0]} *é adm 😳*`, mentioned, true)
 						client.groupMakeAdmin(from, mentioned)
 					}
 					break
@@ -1186,17 +1171,17 @@ break
 					if (!isGroup) return reply(ind.groupo())
 					if (!isGroupAdmins) return reply(ind.admin())
 					if (!isBotGroupAdmins) return reply(ind.badmin())
-					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Tag target yang ingin di jadi admin!')
+					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('A tag de destino que você deseja que seja um administrador!')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 					if (mentioned.length > 1) {
-						teks = 'Perintah di terima, hapus pesan :\n'
+						teks = 'Comando recebido, excluir mensagem :\n'
 						for (let _ of mentioned) {
 							teks += `@${_.split('@')[0]}\n`
 						}
 						mentions(teks, mentioned, true)
 						client.deleteMessage(from, mentioned)
 					} else {
-						mentions(`Perintah di terima, hapus pesan : @${mentioned[0].split('@')[0]}`, mentioned, true)
+						mentions(`Comando recebido, excluir mensagem : @${mentioned[0].split('@')[0]}`, mentioned, true)
 						client.deleteMessage(from, mentioned)
 					}
 					break
@@ -1205,10 +1190,10 @@ break
 					if (!isGroup) return reply(ind.groupo())
 					if (!isGroupAdmins) return reply(ind.admin())
 					if (!isBotGroupAdmins) return reply(ind.badmin())
-					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Tag target yang ingin di tendang!')
+					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('marque o alvo que você deseja chutar!')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 					if (mentioned.length > 1) {
-						teks = 'Bismillah Hedsot >_< :\n'
+						teks = 'Hedsot :\n'
 						for (let _ of mentioned) {
 							teks += `@${_.split('@')[0]}\n`
 						}
@@ -1217,7 +1202,7 @@ break
 						mentions(teks, mentioned, true)
 						client.groupAdd(from, [num])
 					} else {
-						mentions(`Berhasil Meng hedsot pala nya  : @${mentioned[0].split('@')[0]}`, mentioned, true)
+						mentions(`Tiro na cabeça com sucesso kakak : @${mentioned[0].split('@')[0]}`, mentioned, true)
 						client.groupRemove(from, mentioned)
 						}
 					break
@@ -1249,7 +1234,7 @@ break
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))				
 					if (!isGroup) return reply(ind.groupo())                 
-				if (args.length < 1) return reply(`Gini kak : ${prefix}fitnah [@tag&pesan&balasanbot]\n\nContoh : ${prefix}fitnah @tagmember&hai&hai juga`)
+				if (args.length < 1) return reply(`como usar : ${prefix}fitnah [@tag&mensagem&msg]\n\nExemplo : ${prefix}fitnah @tagmembro&oi&oi fdp`)
 				var gh = body.slice(8)
 				mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 					var replace = gh.split("&")[0];
@@ -1264,8 +1249,8 @@ break
                   if (isBanned) return reply(ind.baned())
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-					if (args.length < 1) return reply('Url youtube nya mana kak, Bokep kah?')
-					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply('URL NYA TIDAK VALID KAK')
+					if (args.length < 1) return reply('Onde está a url do youtube em?')
+					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply('SUA URL NÃO É VÁLIDA, IRMÃO')
 					anu = await fetchJson(`https://ohto-ai.herokuapp.com/ytmus?URL=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
 					buffer = await getBuffer(anu.getVideo)
@@ -1278,7 +1263,7 @@ break
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
                 data = await fetchJson(`https://tobz-api.herokuapp.com/api/joox?q=${body.slice(6)}&apikey=${TobzKey}`, {method: 'get'})
                if (data.error) return reply(data.error)
-                 infomp3 = `*Lagu Ditemukan!!!*\nJudul : ${data.result.judul}\nAlbum : ${data.result.album}\nDipublikasi : ${data.result.dipublikasi}`
+                 infomp3 = `*Música Encontrada*\nTítulo : ${data.result.judul}\nÁlbum : ${data.result.album}\nPublicado : ${data.result.dipublikasi}`
                 buffer = await getBuffer(data.result.thumb)
                 lagu = await getBuffer(data.result.mp3)
                 client.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
@@ -1286,14 +1271,14 @@ break
                 await limitAdd(sender)
                 break
 				case 'yutubdl':
-					if (args.length < 1) return reply('Urlnya mana um?')
+					if (args.length < 1) return reply('Onde está o url, hum?')
                   if (isBanned) return reply(ind.baned())
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply('URL NYA TIDAK VALID KAK')				
 					anu = await fetchJson(`https://api.vhtear.com/ytdl?link=${args[0]}=${VhtearKey}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					teks = `*➸ JUDUL* : ${anu.result.title}\n\n*[WAIT] Proses Dumlu Yakan*`
+					teks = `*➸ TÍTULO* : ${anu.result.title}\n\n*[AGUARDE] EM PROCESSO*`
 					thumb = await getBuffer(anu.result.imgUrl)
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
 					buffer = await getBuffer(anu.result.UrlVideo)
@@ -1301,14 +1286,14 @@ break
                     await limitAdd(sender)
 					break
 				case 'tiktod':
-					if (args.length < 1) return reply('Urlnya mana um?')
+					if (args.length < 1) return reply('Onde está o url, hum?')
                   if (isBanned) return reply(ind.baned())
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply('URL NYA TIDAK VALID KAK')
 					anu = await fetchJson(`https://api.xteam.xyz/tiktokv2?url=${args[0]}&APIKEY=xteamapi`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					teks = `*❏ CAPTION* : ${anu.caption}\n\n*[WAIT] Proses Dumlu Yakan*`
+					teks = `*❏ título* : ${anu.caption}\n\n*[AGUARDE] EM PROCESSO*`
 					thumb = await getBuffer(anu.cover)
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
 					buffer = await getBuffer(anu.server_1)
@@ -1322,7 +1307,7 @@ break
                 reply(ind.wait())
                 anu = await fetchJson(`https://api.vhtear.com/ytmp3?query=${body.slice(6)}&apikey=${VhtearKey}`)
                if (anu.error) return reply(anu.error)
-                 infomp3 = `*[❗] Lagu Ditemukan*\n➸ Judul : ${anu.result.title}\n➸ Durasi : ${anu.result.duration}\n➸ Size : ${anu.result.size}\n\n*[WAIT] Proses Dumlu Yakan*`
+                 infomp3 = `*[❗] Música Encontrada*\n➸ Título : ${anu.result.title}\n➸ Duração : ${anu.result.duration}\n➸ Tamanho : ${anu.result.size}\n\n*[AGUARDE] EM PROCESSO*`
                 buffer = await getBuffer(anu.result.image)
                 lagu = await getBuffer(anu.result.mp3)
                 client.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
@@ -1342,14 +1327,14 @@ break
 				if (!q.includes('|')) return  reply(ind.wrongf())
                 const tujuan = q.substring(0, q.indexOf('|') - 1)
                 const jumblah = q.substring(q.lastIndexOf('|') + 1)
-                if (checkATMuser(sender) < jumblah) return reply(`uang mu tidak mencukupi untuk melakukan transfer`)
+                if (checkATMuser(sender) < jumblah) return reply(`seu dinheiro não é suficiente para fazer a transferência`)
                 const tujuantf = `${tujuan.replace("@", '')}@s.whatsapp.net`
                 fee = 0.005 *  jumblah
                 hasiltf = jumblah - fee
                 addKoinUser(tujuantf, hasiltf)
                 confirmATM(sender, jumblah)
-                addKoinUser('6285559240360@s.whatsapp.net', fee)
-                reply(`*⟪ SUKSES ⟫*\n\npengiriman uang berhasil\n➸ dari : +${sender.split("@")[0]}\n➸ ke : +${tujuan}\n➸ jumlah transfer : ${jumblah}\n➸ pajak : ${fee}`)
+                addKoinUser('994406786500@s.whatsapp.net', fee)
+                reply(`*⟪ SUCESSO ⟫*\n\ntransferência de dinheiro foi bem sucedida\n➸ de : +${sender.split("@")[0]}\n➸ para : +${tujuan}\n➸ valor da transferência : ${jumblah}\n➸ impostos : ${fee}`)
                 break
 				case 'atm':
                   if (isBanned) return reply(ind.baned())				
@@ -1363,11 +1348,11 @@ break
 				payout = body.slice(10)
 				const koinPerlimit = 1000
 				const total = koinPerlimit * payout
-				if ( checkATMuser(sender) <= total) return reply(`maaf kak uang nya gak cukup, kumpulin uang nya dumlu >_< jangan open bo kak:v`)
+				if ( checkATMuser(sender) <= total) return reply(`desculpe mano, seu dinheiro não é suficiente, colete mais e tente mais tarde`)
 				if ( checkATMuser(sender) >= total ) {
 					confirmATM(sender, total)
 					bayarLimit(sender, payout)
-					await reply(`*⟪ PEMBAYARAN BERHASIL ⟫*\n\n➸ pengirim : RAMLAN ID\n➸ penerima : ${pushname}\n➸ nominal pembelian : ${payout} \n➸ harga limit : ${koinPerlimit}/limit\n➸ sisa uang : ${checkATMuser(sender)}\n\nproses berhasil dengan SN\n${createSerial(15)}`)
+					await reply(`*⟪ PAGO COM SUCESSO ⟫*\n\n➸ remetente : Admin\n➸ receptor : ${pushname}\n➸ total : ${payout} \n➸ preço do limite : ${koinPerlimit}/limit\n➸ resto do seu dinheiro : ${checkATMuser(sender)}\n\no processo foi bem sucedido com SN\n${createSerial(15)}`)
 				} 
 				break
 /*
@@ -1519,7 +1504,7 @@ break
                   if (isBanned) return reply(ind.baned())
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-                   var cewe =['ullzang girl','cewe cantik','hijab cantik','korean girl','cewe sexy']
+                   var cewe =['garota ulzzang','garota linda','lindo','Menina coreana','muito sexy']
                    anu = await fetchJson('https://api.fdci.se/rep.php?gambar= '+ cewe,)
                    var n = JSON.parse(JSON.stringify(anu));
                    var nimek =  n[Math.floor(Math.random() * n.length)];
@@ -1532,7 +1517,7 @@ break
                   if (isBanned) return reply(ind.baned())
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-                   var cewe =['cowo ganteng', 'cogan', 'korean boy', 'chinese boy', 'japan boy']
+                   var cewe =['homem bonito', 'lindo', 'menino coreano', 'menino chinês', 'menino do japão']
                    anu = await fetchJson('https://api.fdci.se/rep.php?gambar= '+ cewe,)
                    var n = JSON.parse(JSON.stringify(anu));
                    var nimek =  n[Math.floor(Math.random() * n.length)];
@@ -1550,7 +1535,7 @@ break
                  randIndex = Math.floor(Math.random() * jsonData.length);
                  randKey = jsonData[randIndex];
                 hasil = await getBuffer(randKey.result)
-                sendImage(hasil, mek, '*GELAP BOS :V*')
+                sendImage(hasil, mek, '*DARK BOS :V*')
 				break										
 /*
 ]=====> OTHER MENU <=====[
@@ -1558,16 +1543,16 @@ break
             	case 'mining':
                       if (!isRegistered) return reply(ind.noregis())
                       if (isLimit(sender)) return reply(ind.limitend(pushname))
-                      if (!isEventon) return reply(`maaf ${pushname} event mining tidak di aktifkan sama owner Ramlan`)
+                      if (!isEventon) return reply(`desculpa ${pushname} mineração de eventos é ativada pelo proprietário`)
                       if (isOwner) {
                       const one = 999999999
                       addLevelingXp(sender, one)
                       addLevelingLevel(sender, 99)
-                      reply(`karena Ramlan baik Bot memberikan ${one}Xp >_<`)
+                      reply(`pega pra tu ${one}XP >_<`)
                       }else{
                       const mining = Math.ceil(Math.random() * 10000)
                       addLevelingXp(sender, mining)
-                      await reply(`*selamat* ${pushname} kamu mendapatkan *${mining}Xp*`)
+                      await reply(`*parabéns* ${pushname} você ganhou *${mining}XP*`)
                       }
                     await limitAdd(sender)
 					break
@@ -1577,7 +1562,7 @@ break
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 			data = await fetchJson(`https://tobz-api.herokuapp.com/api/moddroid?q=${body.slice(10)}&apikey=${TobzKey}`)
 			hepi = data.result[0] 
-			teks = `*➸ Nama*: ${data.result[0].title}\n*➸ publisher*: ${hepi.publisher}\n*➸ mod info:* ${hepi.mod_info}\n*➸ size*: ${hepi.size}\n*➸ latest version*: ${hepi.latest_version}\n*➸ genre*: ${hepi.genre}\n*➸ link:* ${hepi.link}\n*➸ download*: ${hepi.download}`
+			teks = `*➸ Nome*: ${data.result[0].title}\n*➸ publicado*: ${hepi.publisher}\n*➸ mod info:* ${hepi.mod_info}\n*➸ Tamanho*: ${hepi.size}\n*➸ última versão*: ${hepi.latest_version}\n*➸ gênero*: ${hepi.genre}\n*➸ link:* ${hepi.link}\n*➸ download*: ${hepi.download}`
 			buffer = await getBuffer(hepi.image)
 			client.sendMessage(from, buffer, image, {quoted: mek, caption: `${teks}`})
 			await limitAdd(sender)
@@ -1588,7 +1573,7 @@ break
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 			data = await fetchJson(`https://tobz-api.herokuapp.com/api/happymod?q=${body.slice(10)}&apikey=${TobzKey}`)
 			hupo = data.result[0] 
-			teks = `*➸ Nama*: ${data.result[0].title}\n*➸ version*: ${hupo.version}\n*➸ size:* ${hupo.size}\n*➸ root*: ${hupo.root}\n*➸ purchase*: ${hupo.price}\n*➸ link*: ${hupo.link}\n*➸ download*: ${hupo.download}`
+			teks = `*➸ Nome*: ${data.result[0].title}\n*➸ versão*: ${hupo.version}\n*➸ tamanho:* ${hupo.size}\n*➸ root*: ${hupo.root}\n*➸ compra*: ${hupo.price}\n*➸ link*: ${hupo.link}\n*➸ download*: ${hupo.download}`
 			buffer = await getBuffer(hupo.image)
 			client.sendMessage(from, buffer, image, {quoted: mek, caption: `${teks}`})
 			await limitAdd(sender)
@@ -1599,7 +1584,7 @@ break
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
                client.updatePresence(from, Presence.composing) 
                 data = await fetchJson(`https://tobz-api.herokuapp.com/api/bitly?url=${args[0]}&apikey=${TobzKey}`)
-                hasil = `link : ${args[0]}\n\nOutput : ${data.result}`
+                hasil = `link : ${args[0]}\n\nResultado : ${data.result}`
                 reply(hasil)
                 await limitAdd(sender)
                 break
@@ -1623,7 +1608,7 @@ break
                    anu = await fetchJson(`https://mnazria.herokuapp.com/api/resep?key=${body.slice(14)}`, {method: 'get'})
                    if (anu.error) return reply(anu.error)
                    buff = await getBuffer(anu.thumb_item)
-                   hasil = `*➸ title* \n ${anu.title} *➸ item_name* \n ${anu.item_name} *➸ ingredient* \n${anu.ingredient} *➸ step* \n${anu.step}`
+                   hasil = `*➸ título* \n ${anu.title} *➸ nome do item* \n ${anu.item_name} *➸ ingrediente* \n${anu.ingredient} *➸ step* \n${anu.step}`
                    client.sendMessage(from, buff, image, {quoted: mek, caption: hasil})
                    await limitAdd(sender)
 					break
@@ -1635,7 +1620,7 @@ break
 					data = await fetchJson(`https://docs-jojo.herokuapp.com/api/infohoax`, {method: 'get'})
 					teks = '♡───────────♡\n'
 					for (let i of data.result) {
-						teks += `*➸ Gambar* : ${i.image}\n*➸ Title* : ${i.title}\n*➸ link* : ${i.link}\n*➸ tag* : ${i.tag}\n♡───────────♡\n`
+						teks += `*➸ Cenário* : ${i.image}\n*➸ Título* : ${i.title}\n*➸ link* : ${i.link}\n*➸ tag* : ${i.tag}\n♡───────────♡\n`
 					}
 					reply(teks.trim())
 					await limitAdd(sender)
@@ -1648,7 +1633,7 @@ break
 					brainly(`${brien}`).then(res => {
 					teks = '♡───────────♡\n'
 					for (let Y of res.data) {
-						teks += `\n*⟪ BRAINLY ⟫*\n\n*➸ Pertanyaan:* ${Y.pertanyaan}\n\n*➸ Jawaban:* ${Y.jawaban[0].text}\n♡───────────♡\n`
+						teks += `\n*⟪ BRAINLY ⟫*\n\n*➸ Perguntas:* ${Y.pertanyaan}\n\n*➸ Respostas:* ${Y.jawaban[0].text}\n♡───────────♡\n`
 					}
 					client.sendMessage(from, teks, text, {quoted: mek, detectLinks: false})
                         console.log(res)
@@ -1671,31 +1656,11 @@ break
 					await costum(virtex2(pushname, prefix, botName, ownerName, getLevelingLevel, sender, _registered), text, tescuk, cr)
 					await limitAdd(sender)
 					break
-				case 'mutual':
-                  if (isBanned) return reply(ind.baned())
-				if (!isRegistered) return reply(ind.noregis())
-				if (isLimit(sender)) return reply(ind.limitend(pusname))
-                if (isGroup) return  reply( 'TIDAK BISA DI GRUP KAK')
-                anug = getRegisteredRandomId(_registered).replace('@s.whatsapp.net','')
-                await reply('Mencari Pasangan >_<')
-                await reply(`wa.me/${anug}`)
-                await reply( `Pasangan Ditemukan: 🐊\n*${prefix}next* — Temukan Pasangan Baru`)
-            break
-            case 'next':
-                  if (isBanned) return reply(ind.baned())
-				if (!isRegistered) return reply(ind.noregis())
-				if (isLimit(sender)) return reply(ind.limitend(pusname))
-                if (isGroup) return  reply( 'TIDAK BISA DI GRUP KAK')
-                anug = getRegisteredRandomId(_registered).replace('@s.whatsapp.net','')
-                await reply('Mencari Pasangan >_<')
-                await reply(`wa.me/${anug}`)
-                await reply( `Pasangan Ditemukan: 🐊\n*${prefix}next* — Temukan Pasangan Baru`)
-                break
                    case 'komenyt':
                   if (isBanned) return reply(ind.baned())
 				if (!isRegistered) return reply(ind.noregis())
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
-                                         if (args.length < 1) return reply('teks nya mana om?')
+                                         if (args.length < 1) return reply('cadê o texto, tio?')
                                          gh = body.slice(9)
                                          usnm = gh.split("&")[0];
                                          cmn = gh.split("&")[1];
@@ -1716,7 +1681,7 @@ break
 				case 'info':
 					me = client.user
 					uptime = process.uptime()
-					teks = `*➸ Nama bot* : ${me.name}\n*➸ OWNER* : *RAMLAN ID*\n*➸ AUTHOR* : RAMLAN\n*➸ Nomor Bot* : @${me.jid.split('@')[0]}\n*➸ Prefix* : ${prefix}\n*➸ Total Block Contact* : ${blocked.length}\n*➸ The bot is active on* : ${kyun(uptime)}`
+					teks = `*➸ Nome do bot* : ${me.name}\n*➸ Proprietário* : *Harry*\n*➸ Autor* : Harry\n*➸ Número do Bot* : @${me.jid.split('@')[0]}\n*➸ Prefix* : ${prefix}\n*➸ Contatos Bloqueados* : ${blocked.length}\n*➸ O bot está ativo* : ${kyun(uptime)}`
 					buffer = await getBuffer(me.imgUrl)
 					client.sendMessage(from, buffer, image, {caption: teks, contextInfo:{mentionedJid: [me.jid]}})
 					break
@@ -1724,19 +1689,8 @@ break
             case 'owner':
             case 'creator':
                   client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact, { quoted: mek})
-                  client.sendMessage(from, 'Tuh Nomor Pacarku >_<, Ehh Ownerku mksdnya:v',MessageType.text, { quoted: mek} )
+                  client.sendMessage(from, 'Esse é o número do meu proprietário',MessageType.text, { quoted: mek} )
 					break
-                case 'speed':
-                case 'ping':
-                  if (isBanned) return reply(ind.baned())
-				if (!isRegistered) return reply(ind.noregis())
-				if (isLimit(sender)) return reply(ind.limitend(pusname))
-                    const timestamp = speed();
-                    const latensi = speed() - timestamp
-                    client.updatePresence(from, Presence.composing) 
-				uptime = process.uptime()
-                    client.sendMessage(from, `➸ Speed: *${latensi.toFixed(4)} _Second_*\n➸ Device: *Redmi Note 8 Pro*\n➸ RAM: *6/128*\n➸ Data: *Indosat Ooredoo*\n➸ Jaringan: *4G*\n➸ Status: *Not Charger*\n➸ Bot Type: *Termux*\n\n*➸ Bot Telah Aktif Selama*\n*${kyun(uptime)}*`, text, { quoted: mek})
-                    break
 /*
 ]=====> MAKER MENU <=====[
 */
@@ -1746,7 +1700,7 @@ break
 				if (isLimit(sender)) return reply(ind.limitend(pusname))
 					if (args.length < 1) return reply(ind.wrongf())
 					har = body.slice(12)
-					reply('[❗] Hirti Tihti Tai Anjg :v')
+					reply('[❗] AGUARDE :v')
 					buffer = await getBuffer(`https://api.vhtear.com/hartatahta?text=${har}&apikey=${VhtearKey}`)
 					client.sendMessage(from, buffer, image, {quoted: mek})
 					await limitAdd(sender)
@@ -1770,7 +1724,7 @@ break
 				if (isLimit(sender)) return reply(ind.limitend(pusname))				
 					if (args.length < 1) return reply(ind.wrongf())
 					thun = body.slice(13)
-					if (thun.length > 10) return reply('Teksnya kepanjangan, maksimal 9 karakter')
+					if (thun.length > 10) return reply('O texto é longo, até 9 caracteres')
 					reply(ind.wait())
 					buffer = await getBuffer(`https://api.vhtear.com/thundertext?text=${thun}&apikey=${VhtearKey}`)
 					 client.sendMessage(from, buffer, image, {quoted: mek})
@@ -1779,40 +1733,40 @@ break
 ]=====> OWNER MENU <=====[
 */
 case 'bc':
-							if (!isOwner) return reply('*Lu Saha Tod?*') 
+							if (!isOwner) return reply('*quem é tu kakak*') 
 					if (args.length < 1) return reply('.......')
 					anu = await rahmad.chats.all()
 					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						buff = await rahmad.downloadMediaMessage(encmedia)
 						for (let _ of anu) {
-							rahmad.sendMessage(_.jid, buff, image, {caption: `${body.slice(4)}\n\n*⟪ LANN BROADCAST ⟫*‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎`})
+							rahmad.sendMessage(_.jid, buff, image, {caption: `${body.slice(4)}\n\n*⟪ HARRY TRANSMISSÃO ⟫*‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎`})
 						}
-						reply('*⟪ SUKSES BOSKU ⟫*')
+						reply('*⟪ SUCESSO ⟫*')
 					} else {
 						for (let _ of anu) {
-							sendMess(_.jid, `${body.slice(4)}\n\n‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎*⟪ LANN BROADCAST ⟫*`)
+							sendMess(_.jid, `${body.slice(4)}\n\n‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎*⟪ HARRY TRANSMISSÃO ⟫*`)
 						}
-						reply('*⟪ SUKSES BOSKU ⟫*')
+						reply('*⟪ SUCESSO ⟫*')
 					}
 					break
 				case 'bcgc':
 				     if (!isOwner) return reply(ind.ownerb())
-					if (args.length < 1) return reply('Teksnya mana bosku >_<')
+					if (args.length < 1) return reply('Cadê o texto meu chefe')
 					anu = await groupMembers
 					nom = mek.participant
 					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						buff = await client.downloadMediaMessage(encmedia)
 						for (let _ of anu) {
-							client.sendMessage(_.jid, buff, image, {caption: `*⟪ BC GROUP ⟫*\n\n➸ Dari Grup : ${groupName}\n➸ Pengirim : wa.me/${(sender.split('@')[0])}\n➸ Pesan : ${body.slice(6)}`})
+							client.sendMessage(_.jid, buff, image, {caption: `*⟪ TRANSMISSÃO DE GRUPO ⟫*\n\n➸ Do grupo : ${groupName}\n➸ Remetente : wa.me/${(sender.split('@')[0])}\n➸ Mensagem : ${body.slice(6)}`})
 						}
-						reply('*⟪ SUKSES BOSKU ⟫*')
+						reply('*⟪ SUCESSO ⟫*')
 					} else {
 						for (let _ of anu) {
-							sendMess(_.jid, `*⟪ BC GROUP ⟫*\n\n➸ Dari Grup : ${groupName}\n➸ Pengirim : wa.me/${(sender.split('@')[0])}\n➸ Pesan : ${body.slice(6)}`)
+							sendMess(_.jid, `*⟪ TRANSMISSÃO DE GRUPO ⟫*\n\n➸ Do grupo : ${groupName}\n➸ Remetente : wa.me/${(sender.split('@')[0])}\n➸ Mensagem : ${body.slice(6)}`)
 						}
-						reply('*⟪ SUKSES BOSKU ⟫*')
+						reply('*⟪ SUCESSO ⟫*')
 					}
 					break
 					case 'setreply':
@@ -1820,14 +1774,14 @@ case 'bc':
                     client.updatePresence(from, Presence.composing) 
 					if (args.length < 1) return
 					cr = body.slice(10)
-					reply(`reply berhasil di ubah menjadi : ${cr}`)
+					reply(`a resposta foi alterada com sucesso para : ${cr}`)
 					await limitAdd(sender)
 					break
 				case 'setprefix':
 					if (args.length < 1) return
 					if (!isOwner) return reply(ind.ownerb())
 					prefix = args[0]
-					reply(`*⟪ SUKSES BOSKU ⟫* Prefix jadi ➸ : ${prefix}`)
+					reply(`*⟪ SUCESSO ⟫* Prefix alterado ➸ : ${prefix}`)
 					break
 				case 'clearall':
 					if (!isOwner) return reply(ind.ownerb())
@@ -1844,13 +1798,13 @@ case 'bc':
 					if (!isGroup) return reply(ind.groupo())
 					if (!isOwner) return reply(ind.ownerb())
 					client.blockUser (`${body.slice(7)}@c.us`, "add")
-					client.sendMessage(from, `perintah Diterima, memblokir ${body.slice(7)}@c.us`, text)
+					client.sendMessage(from, `Pedidos recebidos, bloquear ${body.slice(7)}@c.us`, text)
 					break
                     case 'unblock':
 					if (!isGroup) return reply(ind.groupo())
 					if (!isOwner) return reply(ind.ownerb())
 				    client.blockUser (`${body.slice(9)}@c.us`, "remove")
-					client.sendMessage(from, `Perintah Diterima, membuka ${body.slice(9)}@c.us`, text)
+					client.sendMessage(from, `Pedidos aceitos, desbloquear ${body.slice(9)}@c.us`, text)
 					break
 				case 'leave': 
 				if (!isGroup) return reply(ind.groupo())
@@ -1860,24 +1814,24 @@ case 'bc':
 					case 'setppbot':
 					if (!isOwner) return reply(ind.ownerb())
 				    client.updatePresence(from, Presence.composing) 
-					if (!isQuotedImage) return reply(`Kirim gambar dengan caption ${prefix}setbotpp atau tag gambar yang sudah dikirim`)
+					if (!isQuotedImage) return reply(`Envie fotos com legendas ${prefix}setbotpp ou tags de imagem que já foram enviadas`)
 					enmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 					media = await client.downloadAndSaveMediaMessage(enmedia)
 					await client.updateProfilePicture(botNumber, media)
-					reply('Makasih profil barunya bosku😗')
+					reply('Obrigado pelo novo perfil, meu chefe😗')
 					break
 				case 'clone':
 					if (!isGroup) return reply(ind.groupo())
 					if (!isOwner) return reply(ind.ownerg())
-					if (args.length < 1) return reply(' *TAG YANG MAU DI CLONE!!!* ')
-					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Tag cvk')
+					if (args.length < 1) return reply(' *QUERO TAGS NO CLONE!!!* ')
+					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('sucesso')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid[0]
 					let { jid, id, notify } = groupMembers.find(x => x.jid === mentioned)
 					try {
 						pp = await client.getProfilePicture(id)
 						buffer = await getBuffer(pp)
 						client.updateProfilePicture(botNumber, buffer)
-						mentions(`Foto profile Berhasil di perbarui menggunakan foto profile @${id.split('@')[0]}`, [jid], true)
+						mentions(`Foto do perfil atualizada com sucesso usando a foto do perfil @${id.split('@')[0]}`, [jid], true)
 					} catch (e) {
 						reply(ind.stikga())
 					}
@@ -1888,21 +1842,21 @@ case 'bc':
 					bnnd = body.slice(6)
 					ban.push(`${bnnd}@s.whatsapp.net`)
 					fs.writeFileSync('./database/user/banned.json', JSON.stringify(ban))
-					reply(`Nomor wa.me/${bnnd} telah dibanned !`)
+					reply(`Número wa.me/${bnnd} foi banido!`)
 					break
 				case 'unban':
 					if (!isOwner) return reply(ind.ownerb())
 					bnnd = body.slice(8)
 					ban.splice(`${bnnd}@s.whatsapp.net`, 1)
 					fs.writeFileSync('./database/user/banned.json', JSON.stringify(ban))
-					reply(`Nomor wa.me/${bnnd} telah di unban!`)
+					reply(`Número wa.me/${bnnd} Foi Desbanido!`)
 					break									
 /*
 ]=====> PREMIUM MENU <=====[
 */					
                 case 'indohot':
 				 client.updatePresence(from, Presence.composing)
-					if (!isOwner) return reply('FITUR KHUSUS RAMLAN')				
+					if (!isOwner) return reply('RECURSOS ESPECIAIS DO HARRY')				
 				 data = fs.readFileSync('./src/18+.json');
                  jsonData = JSON.parse(data);
                  randIndex = Math.floor(Math.random() * jsonData.length);
@@ -1912,22 +1866,14 @@ case 'bc':
 				break
 /*
 ]=====> TQTO <=====[
-> RAMLAN ID
-> REVOER ID
-> ARIS ID
-> NADIA CANS
-> NAZWA
-> VHTEAR
-> TOBZ
-> MHANKBARBAR
-> All Creator Bot WhatsApp
+> BOT WHATSAPP
 */				
 			if (isGroup && !isCmd && isSimi && budy != undefined) {
 						console.log(budy)
 						muehe = await simih(budy)
 				//		reply(ind.cmdnf(prefix, command))
 					} else {
-						console.log(color('[ERROR]','red'), 'Unregistered Command from', color(sender.split('@')[0]))
+						console.log(color('[ERROR]','red'), 'Comando não registrado de', color(sender.split('@')[0]))
 					}
 					}
 		} catch (e) {
