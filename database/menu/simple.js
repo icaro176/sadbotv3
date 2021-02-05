@@ -1,24 +1,23 @@
 const simple = (pushname, prefix, botName, ownerName, getLevelingLevel, sender, _registered) => {
-	return `🔰 -----[ *SIMPLE MENU* ]----- 🔰
-Hallo, ${pushname} 👋
-Semoga harimu Menyenangkan User, ${sender.split("@")[0]}
+	return `🔰 -----[ *𝐌𝐄𝐍𝐔 𝐒𝐈𝐌𝐏𝐋𝐄𝐒* ]----- 🔰
+Olá, ${pushname} 👋
+${sender.split("@")[0]}
 ┏━━━━━━━━━━━━━━━━━━━━┓
 ┃╭───────────────────
-┃│➸ NAMA : ${pushname}
-┃│➸ LEVEL : ${getLevelingLevel(sender)}
-┃│➸ USER ${botName} : ${_registered.length}
+┃│➸ Nome : ${pushname}
+┃│➸ Level : ${getLevelingLevel(sender)}
+┃│➸ ${botName} : ${_registered.length}
 ┃╰───────────────────
 ┗━━━━━━━━━━━━━━━━━━━━┛
-Berikut adalah fitur yang ada pada bot ini!✨
+❁Recursos❁
 ┏━━━━━━━━━━━━━━━━━━━━┓
 ┃╭───────────────────
 ┃│➸ *${prefix}sticker*
-┃│➸ *${prefix}ttp*
-┃│➸ *${prefix}tts*
-┃│➸ *${prefix}toimg*
-┃│➸ *${prefix}nulis*
-┃│➸ *${prefix}stalkig*
-┃│➸ *${prefix}quotes*
+┃│➸ *${prefix}ttp* <texto>
+┃│➸ *${prefix}tts* <idioma> <texto>
+┃│➸ *${prefix}toimg* 
+┃│➸ *${prefix}nulis* <texto>
+┃│➸ *${prefix}stalkig* <usuário>
 ┃│➸ *${prefix}bikinquote*
 ┃╰───────────────────
 ┗━━━━━━━━━━━━━━━━━━━━┛
