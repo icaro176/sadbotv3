@@ -1,15 +1,15 @@
 const random = (pushname, prefix, botName, ownerName, getLevelingLevel, sender, _registered) => {
-	return `🔰 -----[ *RANDOM MENU* ]----- 🔰
-Hallo, ${pushname} 👋
-Semoga harimu Menyenangkan User, ${sender.split("@")[0]}
+	return `🔰 -----[ *𝐑𝐀𝐍𝐃𝐎𝐌 𝐌𝐄𝐍𝐔* ]----- 🔰
+Olá, ${pushname} 👋
+${sender.split("@")[0]}
 ┏━━━━━━━━━━━━━━━━━━━━┓
 ┃╭───────────────────
-┃│➸ NAMA : ${pushname}
-┃│➸ LEVEL : ${getLevelingLevel(sender)}
-┃│➸ USER ${botName} : ${_registered.length}
+┃│➸ Nome : ${pushname}
+┃│➸ Level : ${getLevelingLevel(sender)}
+┃│➸ ${botName} : ${_registered.length}
 ┃╰───────────────────
 ┗━━━━━━━━━━━━━━━━━━━━┛
-Berikut adalah fitur yang ada pada bot ini!✨
+*❀RECURSOS❀*
 ┏━━━━━━━━━━━━━━━━━━━━┓
 ┃╭───────────────────
 ┃│➸ *${prefix}randomhentong*
