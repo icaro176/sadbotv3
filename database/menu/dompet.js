@@ -1,21 +1,21 @@
 const dompet = (pushname, prefix, botName, ownerName, getLevelingLevel, sender, _registered) => {
-	return `🔰 -----[ *DOMPETKU MENU* ]----- 🔰
-Hallo, ${pushname} 👋
-Semoga harimu Menyenangkan User, ${sender.split("@")[0]}
+	return `🔰 -----[ *𝐋𝐈𝐌𝐈𝐓𝐄 & 𝐃𝐈𝐍𝐇𝐄𝐈𝐑𝐎* ]----- 🔰
+Olá, ${pushname} 👋
+${sender.split("@")[0]}
 ┏━━━━━━━━━━━━━━━━━━━━┓
 ┃╭───────────────────
-┃│➸ NAMA : ${pushname}
-┃│➸ LEVEL : ${getLevelingLevel(sender)}
-┃│➸ USER ${botName} : ${_registered.length}
+┃│➸ Nome : ${pushname}
+┃│➸ Level : ${getLevelingLevel(sender)}
+┃│➸ ${botName} : ${_registered.length}
 ┃╰───────────────────
 ┗━━━━━━━━━━━━━━━━━━━━┛
-Berikut adalah fitur yang ada pada bot ini!✨
+𝑹𝒆𝒄𝒖𝒓𝒔𝒐𝒔
 ┏━━━━━━━━━━━━━━━━━━━━┓
 ┃╭───────────────────
 ┃│➸ *${prefix}limit*
 ┃│➸ *${prefix}atm*
-┃│➸ *${prefix}transfer*
-┃│➸ *${prefix}buylimit*
+┃│➸ *${prefix}transfer* <@tag|total>
+┃│➸ *${prefix}buylimit* <total>
 ┃╰───────────────────
 ┗━━━━━━━━━━━━━━━━━━━━┛
 🔰 -----[ *POWERED BY ${ownerName}* ]----- 🔰`
