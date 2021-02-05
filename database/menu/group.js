@@ -1,15 +1,15 @@
 const groupm = (pushname, prefix, botName, ownerName, getLevelingLevel, sender, _registered) => {
-	return `🔰 -----[ *GROUP MENU* ]----- 🔰
-Hallo, ${pushname} 👋
-Semoga harimu Menyenangkan User, ${sender.split("@")[0]}
+	return `🔰 -----[ *𝐌𝐄𝐍𝐔 𝐆𝐑𝐔𝐏𝐎* ]----- 🔰
+Olá, ${pushname} 👋
+${sender.split("@")[0]}
 ┏━━━━━━━━━━━━━━━━━━━━┓
 ┃╭───────────────────
-┃│➸ NAMA : ${pushname}
-┃│➸ LEVEL : ${getLevelingLevel(sender)}
-┃│➸ USER ${botName} : ${_registered.length}
+┃│➸ Nome : ${pushname}
+┃│➸ Level : ${getLevelingLevel(sender)}
+┃│➸ ${botName} : ${_registered.length}
 ┃╰───────────────────
 ┗━━━━━━━━━━━━━━━━━━━━┛
-Berikut adalah fitur yang ada pada bot ini!✨
+【Recursos】
 ┏━━━━━━━━━━━━━━━━━━━━┓
 ┃╭───────────────────
 ┃│➸ *${prefix}welcome* ⟪ 1/0 ⟫
@@ -18,18 +18,18 @@ Berikut adalah fitur yang ada pada bot ini!✨
 ┃│➸ *${prefix}simih* ⟪ 1/0 ⟫
 ┃│➸ *${prefix}nsfw* ⟪ 1/0 ⟫
 ┃│➸ *${prefix}grup* ⟪ buka/tutup ⟫
-┃│➸ *${prefix}add*
-┃│➸ *${prefix}kick*
-┃│➸ *${prefix}hedsot*
+┃│➸ *${prefix}add* <55112xxxxxx>
+┃│➸ *${prefix}kick* <@tag>
+┃│➸ *${prefix}hedsot* <@tag>
 ┃│➸ *${prefix}linkgrup*
-┃│➸ *${prefix}promote*
-┃│➸ *${prefix}demote*
-┃│➸ *${prefix}setname*
-┃│➸ *${prefix}setdesc*
+┃│➸ *${prefix}promote* <@tag>
+┃│➸ *${prefix}demote* <@tag>
+┃│➸ *${prefix}setname* <texto>
+┃│➸ *${prefix}setdesc* <texto>
 ┃│➸ *${prefix}tagall*
 ┃│➸ *${prefix}admin*
 ┃│➸ *${prefix}level*
-┃│➸ *${prefix}fitnah*
+┃│➸ *${prefix}fitnah* <@tag&mensagem&mensagem>
 ┃│➸ *${prefix}hidetag*
 ┃│➸ *${prefix}hidetag5*
 ┃╰───────────────────
